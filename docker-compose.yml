@@ -1,0 +1,12 @@
+version: '1'
+services:
+  mysql-demo:
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '123456'
+      MYSQL_DATABASE: 'todo-list'
+    image: "mysql:8.0"
+    restart: always
+    ports:
+      - "13306:3306"
