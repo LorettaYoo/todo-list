@@ -1,7 +1,7 @@
 package com.loretta.todolist.controller;
 
-import com.loretta.todolist.controller.response.TasksListResponese;
-import com.loretta.todolist.controller.response.TasksResponse;
+import com.loretta.todolist.controller.response.TaskListResponse;
+import com.loretta.todolist.controller.response.TaskResponse;
 import com.loretta.todolist.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping
-    public TasksListResponese<TasksResponse> listTasks() {
+    public TaskListResponse<TaskResponse> listTasks() {
         return taskService.listTasks();
     }
 }

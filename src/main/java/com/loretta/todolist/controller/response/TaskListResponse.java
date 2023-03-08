@@ -3,13 +3,15 @@ package com.loretta.todolist.controller.response;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class TasksResponse {
-    private long id;
-    private String taskName;
-    private boolean completed;
-    private boolean deleted;
+@ToString
+public class TaskListResponse<T> {
+    private long totalTasksNumber;
+    private List<T> tasksList;
 }
