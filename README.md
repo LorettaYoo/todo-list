@@ -62,4 +62,7 @@ revoke：和grant是相反的 grant是给权限, revoke就是收权限。
 lsof -i tcp:3306
 ```
 
+## maven 中央仓库，可以查一下依赖使用什么版本
+https://central.sonatype.com/search?smo=true&q=mapstruct-processor
+
 
