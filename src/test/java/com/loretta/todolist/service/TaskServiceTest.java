@@ -1,5 +1,6 @@
 package com.loretta.todolist.service;
 
+import com.loretta.todolist.controller.request.AddTaskRequest;
 import com.loretta.todolist.controller.response.TaskListResponse;
 import com.loretta.todolist.controller.response.TaskResponse;
 import com.loretta.todolist.infrastructure.TaskMapper;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class TaskServiceTest {
@@ -38,4 +40,17 @@ class TaskServiceTest {
 
     }
 
+    @Test
+    void should_save_task_successfully() {
+        // Given
+        AddTaskRequest request = AddTaskRequest.builder().taskName("test task").build();
+        TaskPO taskPO = TaskPO.builder().taskName("test task").build();
+
+        // When
+        when(taskRepository.save(taskPO)).thenReturn(taskPO);
+        taskService.saveTasks(request);
+
+        // Then
+        verify(taskRepository).save(taskPO);
+    }
 }

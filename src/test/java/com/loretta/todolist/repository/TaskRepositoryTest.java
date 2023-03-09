@@ -41,4 +41,18 @@ class TaskRepositoryTest {
         assertThat(taskPOList.get(0).isCompleted()).isEqualTo(false);
         assertThat(taskPOList.get(0).isDeleted()).isEqualTo(false);
     }
+
+    @Test
+    void should_save_task_successfully() {
+        // Given
+        TaskPO taskPO = TaskPO.builder().taskName("test task").build();
+
+        // When
+        TaskPO save = taskRepository.save(taskPO);
+
+        // Then
+        assertThat(save.getTaskName()).isEqualTo("test task");
+        assertThat(save.isCompleted()).isEqualTo(false);
+        assertThat(save.isDeleted()).isEqualTo(false);
+    }
 }

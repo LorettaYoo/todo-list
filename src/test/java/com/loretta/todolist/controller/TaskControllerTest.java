@@ -50,4 +50,14 @@ class TaskControllerTest {
         Assertions.assertEquals(MVCRESULT, mvcResult.getResponse().getContentAsString());
 
     }
+
+    @Test
+    void should_add_task_successfully() {
+        // Given
+
+
+        // When
+
+        // Then
+    }
 }

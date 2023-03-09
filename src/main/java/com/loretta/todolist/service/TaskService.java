@@ -1,9 +1,11 @@
 package com.loretta.todolist.service;
 
+import com.loretta.todolist.controller.request.AddTaskRequest;
 import com.loretta.todolist.controller.response.TaskListResponse;
 import com.loretta.todolist.controller.response.TaskResponse;
 import com.loretta.todolist.infrastructure.TaskMapper;
 import com.loretta.todolist.repository.TaskRepository;
+import com.loretta.todolist.repository.entity.TaskPO;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -27,4 +29,9 @@ public class TaskService {
     }
 
 
+    public void saveTasks(AddTaskRequest request) {
+        String taskName = request.getTaskName();
+        TaskPO taskPO = TaskPO.builder().taskName(taskName).build();
+        taskRepository.save(taskPO);
+    }
 }
