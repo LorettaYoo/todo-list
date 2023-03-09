@@ -29,7 +29,7 @@ class TaskServiceTest {
         List<TaskResponse> taskResponseList = List.of(taskResponse);
 
         // When
-        when(taskRepository.findAll(Sort.Direction.DESC, "createTime")).thenReturn(taskPOList);
+        when(taskRepository.findAll(Sort.by(Sort.Direction.DESC, "createTime"))).thenReturn(taskPOList);
         TaskListResponse<TaskResponse> taskResponseTaskListResponse = taskService.listTasks();
 
         // Then

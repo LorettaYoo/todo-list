@@ -16,12 +16,15 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class TaskService {
     private TaskRepository taskRepository;
+
     public TaskListResponse<TaskResponse> listTasks() {
-        List<TaskResponse> taskResponseList = taskRepository.findAll(Sort.Direction.DESC, "createTime")
+        List<TaskResponse> taskResponseList = taskRepository.findAll(Sort.by(Sort.Direction.DESC, "createTime"))
                 .stream()
                 .map(TaskMapper.MAPPER::toTaskResponse)
                 .collect(Collectors.toList());
         int taskNumber = taskResponseList.size();
-        return new TaskListResponse<>(taskNumber,taskResponseList);
+        return new TaskListResponse<>(taskNumber, taskResponseList);
     }
+
+
 }
