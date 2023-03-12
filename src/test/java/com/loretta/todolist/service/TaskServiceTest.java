@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -52,5 +53,18 @@ class TaskServiceTest {
 
         // Then
         verify(taskRepository).save(taskPO);
+    }
+
+    @Test
+    void should_complete_task_successfully() {
+        // Given
+        TaskPO taskPO = TaskPO.builder().id(1L).taskName("test task").completed(true).deleted(false).build();
+
+        // When
+        when(taskRepository.findById(1L)).thenReturn(Optional.of(taskPO));
+        taskService.completeTasks(1L);
+        // Then
+        verify(taskRepository).findById(1L);
+        verify(taskRepository).updateCompletedById(false,1L);
     }
 }

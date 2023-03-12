@@ -10,7 +10,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -31,7 +34,18 @@ public class TaskService {
 
     public void saveTasks(AddTaskRequest request) {
         String taskName = request.getTaskName();
-        TaskPO taskPO = TaskPO.builder().taskName(taskName).build();
+        String createTime = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE);
+        TaskPO taskPO = TaskPO.builder().taskName(taskName).createTime(createTime).build();
         taskRepository.save(taskPO);
+    }
+
+    public void completeTasks(long id) {
+        Optional<TaskPO> optionalTaskPO = taskRepository.findById(id);
+        if (optionalTaskPO.isPresent()) {
+            boolean completed = optionalTaskPO.get().isCompleted();
+            taskRepository.updateCompletedById(!completed,id);
+        }else {
+            throw new RuntimeException();
+        }
     }
 }
