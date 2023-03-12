@@ -48,4 +48,8 @@ public class TaskService {
             throw new RuntimeException();
         }
     }
+
+    public void deleteTask(long id) {
+        taskRepository.deleteById(id);
+    }
 }

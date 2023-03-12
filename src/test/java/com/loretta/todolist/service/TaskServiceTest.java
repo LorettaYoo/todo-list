@@ -26,7 +26,7 @@ class TaskServiceTest {
     @Test
     void should_return_all_tasks() {
         // Given
-        TaskPO taskPO = new TaskPO(1L, "task 01", false, false, "2023/03/07");
+        TaskPO taskPO = new TaskPO(1L, "task 01", false, "2023/03/07");
         List<TaskPO> taskPOList = List.of(taskPO);
         TaskResponse taskResponse = TaskMapper.MAPPER.toTaskResponse(taskPO);
         List<TaskResponse> taskResponseList = List.of(taskResponse);
@@ -58,7 +58,7 @@ class TaskServiceTest {
     @Test
     void should_complete_task_successfully() {
         // Given
-        TaskPO taskPO = TaskPO.builder().id(1L).taskName("test task").completed(true).deleted(false).build();
+        TaskPO taskPO = TaskPO.builder().id(1L).taskName("test task").completed(true).build();
 
         // When
         when(taskRepository.findById(1L)).thenReturn(Optional.of(taskPO));

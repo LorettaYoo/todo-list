@@ -29,8 +29,6 @@ public class TaskPO {
     @Column(name = "task_name")
     private String taskName;
     private boolean completed;
-    private boolean deleted;
-
     @Column(name = "create_time")
     private String createTime;
 

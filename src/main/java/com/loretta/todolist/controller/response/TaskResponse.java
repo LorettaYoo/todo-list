@@ -13,6 +13,5 @@ public class TaskResponse {
     private long id;
     private String taskName;
     private boolean completed;
-    private boolean deleted;
     private String createTime;
 }
