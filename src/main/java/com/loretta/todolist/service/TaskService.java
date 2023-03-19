@@ -33,10 +33,14 @@ public class TaskService {
 
 
     public void saveTasks(AddTaskRequest request) {
-        String taskName = request.getTaskName();
-        String createTime = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE);
-        TaskPO taskPO = TaskPO.builder().taskName(taskName).createTime(createTime).build();
-        taskRepository.save(taskPO);
+        if (request.getTaskName() != null) {
+            String taskName = request.getTaskName();
+            String createTime = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
+            TaskPO taskPO = TaskPO.builder().taskName(taskName).createTime(createTime).build();
+            taskRepository.save(taskPO);
+        }else {
+            throw new RuntimeException();
+        }
     }
 
     public void completeTasks(long id) {
@@ -50,6 +54,10 @@ public class TaskService {
     }
 
     public void deleteTask(long id) {
-        taskRepository.deleteById(id);
+        if (taskRepository.findById(id).isPresent()) {
+            taskRepository.deleteById(id);
+        }else {
+            throw new RuntimeException();
+        }
     }
 }

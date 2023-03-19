@@ -50,6 +50,12 @@ revoke：和grant是相反的 grant是给权限, revoke就是收权限。
 1. TaskController 未加 @AllArgsConstructor 注解，导致TaskService没有被注入
 2. 测试中TaskService上写的注解是 @Mock 不是 @MockBean
 
+## 1.4 注解
+### Q：@SpringBootTest 是集成测试才加吗？
+
+### A:
+
+
 
 # 2.Note
 

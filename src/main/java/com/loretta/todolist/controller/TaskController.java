@@ -41,7 +41,7 @@ public class TaskController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> completeTasks(@PathVariable long id ) {
         taskService.completeTasks(id);
-        return new ResponseEntity<>("Completed", HttpStatus.OK);
+        return new ResponseEntity<>("Updated", HttpStatus.OK);
     }
 
 

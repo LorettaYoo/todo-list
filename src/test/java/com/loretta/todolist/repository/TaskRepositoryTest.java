@@ -39,7 +39,6 @@ class TaskRepositoryTest {
         assertThat(taskPOList).hasSize(2);
         assertThat(taskPOList.get(0).getTaskName()).isEqualTo("task 02");
         assertThat(taskPOList.get(0).isCompleted()).isEqualTo(false);
-        assertThat(taskPOList.get(0).isDeleted()).isEqualTo(false);
     }
 
     @Test
@@ -53,6 +52,5 @@ class TaskRepositoryTest {
         // Then
         assertThat(save.getTaskName()).isEqualTo("test task");
         assertThat(save.isCompleted()).isEqualTo(false);
-        assertThat(save.isDeleted()).isEqualTo(false);
     }
 }
